@@ -19,7 +19,7 @@ const getCurrentDate = () => {
   return `${year}-${month}-${day}`;
 };
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState(0.0);
   const [enteredDate, setEnteredDate] = useState(getCurrentDate);
@@ -77,11 +77,10 @@ const ExpenseForm = () => {
       date: new Date(enteredDate),
     };
 
+    props.onSaveExpenseData(expenseData);
     setEnteredTitle("");
     setEnteredAmount(0.0);
     setEnteredDate(getCurrentDate);
-
-    console.log(expenseData);
   };
 
   return (
